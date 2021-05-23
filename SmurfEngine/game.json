@@ -1,0 +1,25 @@
+{
+  "player": {"health": 30,
+             "name": "",
+             "inventory": ["apple"]},
+  "scenes": [
+              {
+                "name": "scene1",
+                "options": ["scene2", "scene3"],
+                "scene_text": "Texas. August 4th, 1893",
+                "items": ["apple", "pear"]
+              },
+              {
+                "name": "scene2",
+                "options": ["scene1", "scene3"],
+                "scene_text": "Scene2 text bitch boy",
+                "items": []
+              },
+              {
+                "name": "scene3",
+                "options": ["scene1", "scene2"],
+                "scene_text": "Scene3 text dead bitch boy",
+                "items": []
+              }
+            ]
+}
