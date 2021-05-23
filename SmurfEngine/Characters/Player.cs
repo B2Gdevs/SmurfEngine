@@ -1,4 +1,5 @@
 ﻿using SmurfEngine.Items;
+using System;
 using System.Collections.Generic;
 
 namespace SmurfEngine.Characters
@@ -16,15 +17,18 @@ namespace SmurfEngine.Characters
 			this.inventory = inventory;
 		}
 
-		public void AddItemToInventory(Item item)
+		public void AddItemToInventory(Item item, int quantity = 1)
         {
-			inventory.Add(item);
+			inventory.Add(item, quantity);
         }
 
 		public void DisplayInventory()
         {
+			Console.WriteLine($"Inventory for {name}:");
+			Console.WriteLine(("").PadRight(24, '*'));
 			inventory.Display();
-        }
+			Console.WriteLine(("").PadRight(24, '*'));
+		}
 	}
 
 }

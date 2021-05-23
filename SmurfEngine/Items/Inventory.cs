@@ -6,14 +6,14 @@ namespace SmurfEngine.Items
 {
     internal class Inventory
     {
-        Dictionary<string, InventoryItem> contents;
+        Dictionary<string, InventoryItem> contents = new Dictionary<string, InventoryItem>();
 
-        public void Add(Item item)
+        public void Add(Item item, int quantity)
         {
             if (contents.TryGetValue(item.name, out var invItem))
                 ++invItem.quantity;
             else
-                contents.Add(item.name, new InventoryItem(item));
+                contents.Add(item.name, new InventoryItem(item, quantity));
         }
 
         public void Display()
@@ -23,7 +23,7 @@ namespace SmurfEngine.Items
                 var item = c.Value.item;
                 var quantity = c.Value.quantity;
 
-                Console.WriteLine($"{item.name}\tx{item}");
+                Console.WriteLine($"{item.name}\tx{quantity}");
             }
         }
     }
