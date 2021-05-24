@@ -1,14 +1,16 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Text;
 
 namespace SmurfEngine.Items
 {
-	internal class Item
-	{
-		internal string name;
+    public class Item
+    {
+        public string Name { get; set; }
 
-		public Item(string name)
-		{
-			this.name = name;
-		}
-	}
+        public Item(string name)
+        {
+            this.Name = name;
+        }
+    }
 }

@@ -5,33 +5,33 @@ using System.Collections.Generic;
 
 namespace SmurfEngine.Characters
 {
-	internal class Player
+	public class Player
 	{
-		string name;
-		int health;
-		Inventory inventory;
+		public string Name { get; set; }
+		public int Health { get; set; }
+		public Inventory Inventory { get; set; }
 
 		public Player(string name, int health, Inventory inventory)
 		{
-			this.name = name;
-			this.health = health;
-			this.inventory = inventory;
+			this.Name = name;
+			this.Health = health;
+			this.Inventory = inventory;
 		}
 
 		public void AddItemToInventory(Item item, int quantity = 1)
         {
-			inventory.Add(item, quantity);
+			Inventory.Add(item, quantity);
         }
 
 		public void DisplayInventory()
         {
 			Console.Write("Inventory for ");
 			UIText.SetColor(UIText.playerNameColor);
-			Console.Write(name);
+			Console.Write(Name);
 			UIText.SetColor(UIText.defaultColor);
 			Console.Write(":\n");
 			Console.WriteLine(("").PadRight(24, '*'));
-			inventory.Display();
+			Inventory.Display();
 			Console.WriteLine(("").PadRight(24, '*'));
 		}
 	}

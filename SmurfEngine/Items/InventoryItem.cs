@@ -5,23 +5,23 @@ using SmurfEngine.UI;
 
 namespace SmurfEngine.Items
 {
-    internal class InventoryItem
+    public class InventoryItem
     {
-        internal Item item;
-        internal int quantity;
+        public int Quantity { get; set; }
+        public Item Item { get; set; }
 
         public InventoryItem(Item item, int quantity = 1)
         {
-            this.item = item;
-            this.quantity = quantity;
+            this.Item = item;
+            this.Quantity = quantity;
         }
 
         public void Display()
         {
             UIText.SetColor(UIText.itemNameColor);
-            Console.Write($"{item.name}\t");
+            Console.Write($"{this.Item.Name}\t");
             UIText.SetColor(UIText.itemQuantityColor);
-            Console.Write($"x{quantity}\n");
+            Console.Write($"x{this.Quantity}\n");
             UIText.SetColor(UIText.defaultColor);
         }
     }
