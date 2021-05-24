@@ -1,4 +1,5 @@
 ﻿using SmurfEngine.Items;
+using SmurfEngine.UI;
 using System;
 using System.Collections.Generic;
 
@@ -24,11 +25,14 @@ namespace SmurfEngine.Characters
 
 		public void DisplayInventory()
         {
-			Console.WriteLine($"Inventory for {name}:");
+			Console.Write("Inventory for ");
+			UIText.SetColor(UIText.playerNameColor);
+			Console.Write(name);
+			UIText.SetColor(UIText.defaultColor);
+			Console.Write(":\n");
 			Console.WriteLine(("").PadRight(24, '*'));
 			inventory.Display();
 			Console.WriteLine(("").PadRight(24, '*'));
 		}
 	}
-
 }

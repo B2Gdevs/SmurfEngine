@@ -12,19 +12,14 @@ namespace SmurfEngine.Items
         {
             if (contents.TryGetValue(item.name, out var invItem))
                 ++invItem.quantity;
-            else
+            else 
                 contents.Add(item.name, new InventoryItem(item, quantity));
         }
 
         public void Display()
         {
-            foreach(var c in contents)
-            {
-                var item = c.Value.item;
-                var quantity = c.Value.quantity;
-
-                Console.WriteLine($"{item.name}\tx{quantity}");
-            }
+            foreach (var c in contents) 
+                c.Value.Display();
         }
     }
 }
