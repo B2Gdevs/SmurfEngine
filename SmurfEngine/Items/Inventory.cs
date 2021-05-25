@@ -1,24 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 
 namespace SmurfEngine.Items
 {
-    internal class Inventory
+    public class Inventory
     {
-        Dictionary<string, InventoryItem> contents = new Dictionary<string, InventoryItem>();
+        public Dictionary<string, InventoryItem> Contents { get; set; } = new Dictionary<string, InventoryItem>();
 
         public void Add(Item item, int quantity)
         {
-            if (contents.TryGetValue(item.name, out var invItem))
-                ++invItem.quantity;
-            else 
-                contents.Add(item.name, new InventoryItem(item, quantity));
+            if (this.Contents.TryGetValue(item.Name, out var invItem))
+                invItem.Quantity += quantity;
+            else
+                this.Contents.Add(item.Name, new InventoryItem(item, quantity));
         }
 
         public void Display()
         {
-            foreach (var c in contents) 
+            foreach (var c in this.Contents) 
                 c.Value.Display();
         }
     }
