@@ -30,6 +30,7 @@ namespace SmurfEngine.Utilities.DebugTools
                 {
                     new Option { Name = "Scene 2", OptionType = OptionType.Scene },
                     new Option { Name = "Inventory", OptionType = OptionType.Inventory },
+                    new Option { Name = "Stats", OptionType = OptionType.Status },
                     new Option { Name = "Exit", OptionType = OptionType.Exit }
                 }
             };
@@ -47,6 +48,7 @@ namespace SmurfEngine.Utilities.DebugTools
                 {
                     new Option { Name = "Scene 1", OptionType = OptionType.Scene },
                     new Option { Name = "Inventory", OptionType = OptionType.Inventory },
+                    new Option { Name = "Stats", OptionType = OptionType.Status },
                     new Option { Name = "Exit", OptionType = OptionType.Exit }
                 }
             };

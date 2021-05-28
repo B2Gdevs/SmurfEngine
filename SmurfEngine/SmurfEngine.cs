@@ -39,6 +39,9 @@ namespace SmurfEngine
 
                 if (selectedOption.OptionType is OptionType.Inventory)
                     this.Game.Player.DisplayInventory();
+
+                if (selectedOption.OptionType is OptionType.Status)
+                    this.Game.Player.DisplayStats();
             }
         }
 

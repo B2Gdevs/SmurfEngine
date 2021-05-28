@@ -39,6 +39,11 @@
           },
           {
             "$type": "SmurfEngine.Utilities.Option, SmurfEngine",
+            "Name": "Status",
+            "OptionType": 4
+          },
+          {
+            "$type": "SmurfEngine.Utilities.Option, SmurfEngine",
             "Name": "Exit",
             "OptionType": 1
           }
@@ -70,6 +75,11 @@
             "$type": "SmurfEngine.Utilities.Option, SmurfEngine",
             "Name": "Inventory",
             "OptionType": 3
+          },
+          {
+            "$type": "SmurfEngine.Utilities.Option, SmurfEngine",
+            "Name": "Status",
+            "OptionType": 4
           },
           {
             "$type": "SmurfEngine.Utilities.Option, SmurfEngine",

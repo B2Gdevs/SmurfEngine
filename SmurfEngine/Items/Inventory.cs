@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace SmurfEngine.Items
 {
@@ -8,10 +9,38 @@ namespace SmurfEngine.Items
 
         public void Add(Item item, int quantity)
         {
+            if (quantity == 0) return;
+
             if (this.Contents.TryGetValue(item.Name, out var invItem))
                 invItem.Quantity += quantity;
             else
                 this.Contents.Add(item.Name, new InventoryItem(item, quantity));
+        }
+
+        public bool Remove(Item item, int quantity)
+        {
+            if (quantity <= 0) return false;
+
+            if (this.Contents.TryGetValue(item.Name, out var invItem))
+            {
+                if (quantity >= invItem.Quantity)
+                    this.Contents.Remove(item.Name);
+                else
+                    invItem.Quantity -= quantity;
+
+                return true;
+            }
+            
+            return false;
+        }
+
+        public bool Check(Item item, int quantity = 1)
+        {
+            if (this.Contents.TryGetValue(item.Name, out var invItem))
+            {
+                return invItem.Quantity >= quantity;
+            }
+            else return false;
         }
 
         public void Display()

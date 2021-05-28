@@ -8,6 +8,7 @@ namespace SmurfEngine.Utilities.Enums.Options
         Scene,
         Exit,
         Invalid,
-        Inventory
+        Inventory,
+        Status
     }
 }

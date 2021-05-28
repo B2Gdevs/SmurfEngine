@@ -1,4 +1,6 @@
-﻿using System;
+﻿using SmurfEngine.Attributes;
+using SmurfEngine.Characters;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
