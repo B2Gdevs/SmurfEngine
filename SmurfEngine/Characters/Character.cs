@@ -19,42 +19,40 @@ namespace SmurfEngine.Characters
         #region Stats
         private Dictionary<string, Stat> stats = new Dictionary<string, Stat>();
 
-        public virtual Stat Strength     => GetStat(StatType.STR.ToString());
-        public virtual Stat Intelligence => GetStat(StatType.INT.ToString());
-        public virtual Stat Wisdom       => GetStat(StatType.WIS.ToString());
-        public virtual Stat Dexterity    => GetStat(StatType.DEX.ToString());
-        public virtual Stat Constitution => GetStat(StatType.CON.ToString());
-        public virtual Stat Charisma     => GetStat(StatType.CHA.ToString());
+        public virtual Stat Strength     => this.GetStat(StatType.STR.ToString());
+        public virtual Stat Intelligence => this.GetStat(StatType.INT.ToString());
+        public virtual Stat Wisdom       => this.GetStat(StatType.WIS.ToString());
+        public virtual Stat Dexterity    => this.GetStat(StatType.DEX.ToString());
+        public virtual Stat Constitution => this.GetStat(StatType.CON.ToString());
+        public virtual Stat Charisma     => this.GetStat(StatType.CHA.ToString());
         #endregion
 
         #region Constructors
         /// <summary>
         /// Creates a Character with stats defaulted to zero
         /// </summary>
-        /// <param name="name"></param>
-        /// <param name="health"></param>
-        /// <param name="inventory"></param>
+        /// <param name="name">The name of the character.</param>
+        /// <param name="health">The character's base health</param>
+        /// <param name="inventory">The inventory for the chacter to have.</param>
         public Character(string name, int health, Inventory inventory)
         {
             this.Name = name;
             this.Health = health;
             this.Inventory = inventory;
 
-            this.stats.Add(StatType.STR.ToString(), new Stat(StatType.STR.ToString(), 0, 0));
-            this.stats.Add(StatType.INT.ToString(), new Stat(StatType.INT.ToString(), 0, 0));
-            this.stats.Add(StatType.WIS.ToString(), new Stat(StatType.WIS.ToString(), 0, 0));
-            this.stats.Add(StatType.DEX.ToString(), new Stat(StatType.DEX.ToString(), 0, 0));
-            this.stats.Add(StatType.CON.ToString(), new Stat(StatType.CON.ToString(), 0, 0));
-            this.stats.Add(StatType.CHA.ToString(), new Stat(StatType.CHA.ToString(), 0, 0));
+            // Initialize stats
+            foreach (var statName in Enum.GetNames(typeof(StatType)))
+                this.stats.Add(statName, new Stat(statName, 0, 0));
+
         }
 
         /// <summary>
         /// Create a character and sets all base stats. 
         /// For testing purposes, not sure if this is the right approach.
         /// </summary>
-        /// <param name="name"></param>
-        /// <param name="health"></param>
-        /// <param name="inventory"></param>
+        /// <param name="name">The name of the character.</param>
+        /// <param name="health">The character's base health</param>
+        /// <param name="inventory">The inventory for the chacter to have.</param>
         /// <param name="stats">Players stats in order STR, INT, WIS, DEX, CON, CHA</param>
         public Character(string name, int health, Inventory inventory, Tuple<int,int,int,int,int,int> stats)
         {
@@ -71,19 +69,35 @@ namespace SmurfEngine.Characters
         }
         #endregion
 
+        /// <summary>
+        /// Adds the item to the inventory by quantity amount.  
+        /// </summary>
+        /// <param name="item">The item to be added to the inventory.</param>
+        /// <param name="quantity">The number of the same item to be added. Default = 1</param>
         public virtual void AddItemToInventory(Item item, int quantity = 1)
         {
-            Inventory.Add(item, quantity);
+            this.Inventory.Add(item, quantity);
         }
 
+        /// <summary>
+        /// Removes the item to the inventory by quantity amount.  
+        /// </summary>
+        /// <param name="item">The item to be removed to the inventory.</param>
+        /// <param name="quantity">The number of the same item to be removed. Default = 1</param>
+        /// <returns>A boolean determining if the</returns>
         public virtual bool RemoveItemFromInventory(Item item, int quantity = 1)
         {
-            return Inventory.Remove(item, quantity);
+            return this.Inventory.Remove(item, quantity);
         }
 
+        /// <summary>
+        /// Retreives the character stat given the stat name.
+        /// </summary>
+        /// <param name="statName">The stat name.</param>
+        /// <returns>The stat object.</returns>
         public Stat GetStat(string statName)
         {
-            stats.TryGetValue(statName, out var stat);
+            _ = this.stats.TryGetValue(statName, out Stat stat);
             return stat;
         }
 
@@ -116,5 +130,4 @@ namespace SmurfEngine.Characters
         }
         #endregion
     }
-
 }
