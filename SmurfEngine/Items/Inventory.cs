@@ -37,10 +37,9 @@ namespace SmurfEngine.Items
         public bool Check(Item item, int quantity = 1)
         {
             if (this.Contents.TryGetValue(item.Name, out var invItem))
-            {
                 return invItem.Quantity >= quantity;
-            }
-            else return false;
+            else 
+                return false;
         }
 
         public void Display()
