@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace SmurfEngine.Items
+﻿namespace SmurfEngine.Items
 {
     public class Item
     {
