@@ -3,7 +3,7 @@
 namespace SmurfEngine.Utilities.Enums.Options
 {
     [Flags]
-    public enum OptionType 
+    public enum OptionType
     {
         Scene,
         Exit,
