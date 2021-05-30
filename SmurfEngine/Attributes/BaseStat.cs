@@ -6,15 +6,8 @@ namespace SmurfEngine.Attributes
 {
     public class BaseStat
     {
-        public string Name { get; private set; }
-        public int BaseValue { get; set; }
-        public float BaseMultiplier { get; set; }
-
-        public BaseStat(string name, int value, float multiplier)
-        {
-            this.Name = name;
-            this.BaseValue = value;
-            this.BaseMultiplier = multiplier;
-        }
+        public virtual string Name { get; set; }
+        public virtual int BaseValue { get; set; }
+        public virtual float BaseMultiplier { get; set; }
     }
 }

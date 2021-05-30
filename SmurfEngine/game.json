@@ -17,6 +17,54 @@
           }
         }
       }
+    },
+    "Stats": {
+      "$type": "SmurfEngine.Attributes.CharacterStats, SmurfEngine",
+      "Stats": {
+        "$type": "System.Collections.Generic.Dictionary`2[[System.String, System.Private.CoreLib],[SmurfEngine.Attributes.Stat, SmurfEngine]], System.Private.CoreLib",
+        "STR": {
+          "$type": "SmurfEngine.Attributes.Stat, SmurfEngine",
+          "Value": 0.0,
+          "Name": "STR",
+          "BaseValue": 0,
+          "BaseMultiplier": 0.0
+        },
+        "INT": {
+          "$type": "SmurfEngine.Attributes.Stat, SmurfEngine",
+          "Value": 0.0,
+          "Name": "INT",
+          "BaseValue": 0,
+          "BaseMultiplier": 0.0
+        },
+        "WIS": {
+          "$type": "SmurfEngine.Attributes.Stat, SmurfEngine",
+          "Value": 0.0,
+          "Name": "WIS",
+          "BaseValue": 0,
+          "BaseMultiplier": 0.0
+        },
+        "DEX": {
+          "$type": "SmurfEngine.Attributes.Stat, SmurfEngine",
+          "Value": 0.0,
+          "Name": "DEX",
+          "BaseValue": 0,
+          "BaseMultiplier": 0.0
+        },
+        "CON": {
+          "$type": "SmurfEngine.Attributes.Stat, SmurfEngine",
+          "Value": 0.0,
+          "Name": "CON",
+          "BaseValue": 0,
+          "BaseMultiplier": 0.0
+        },
+        "CHA": {
+          "$type": "SmurfEngine.Attributes.Stat, SmurfEngine",
+          "Value": 0.0,
+          "Name": "CHA",
+          "BaseValue": 0,
+          "BaseMultiplier": 0.0
+        }
+      }
     }
   },
   "Scenes": {
@@ -39,7 +87,7 @@
           },
           {
             "$type": "SmurfEngine.Utilities.Option, SmurfEngine",
-            "Name": "Status",
+            "Name": "Stats",
             "OptionType": 4
           },
           {
@@ -78,7 +126,7 @@
           },
           {
             "$type": "SmurfEngine.Utilities.Option, SmurfEngine",
-            "Name": "Status",
+            "Name": "Stats",
             "OptionType": 4
           },
           {
