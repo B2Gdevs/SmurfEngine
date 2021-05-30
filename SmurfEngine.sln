@@ -3,7 +3,14 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31025.194
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmurfEngine", "SmurfEngine\SmurfEngine.csproj", "{5F54335B-07E7-4899-A9D1-0501E2630940}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SmurfEngine", "SmurfEngine\SmurfEngine.csproj", "{5F54335B-07E7-4899-A9D1-0501E2630940}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmurfEngineTests", "SmurfEngineTests\SmurfEngineTests.csproj", "{EB2A1B02-8B6C-4413-9DC1-584702A33198}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{D5B41D2F-9107-4A79-B4E3-D185A366F883}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +22,10 @@ Global
 		{5F54335B-07E7-4899-A9D1-0501E2630940}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5F54335B-07E7-4899-A9D1-0501E2630940}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5F54335B-07E7-4899-A9D1-0501E2630940}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EB2A1B02-8B6C-4413-9DC1-584702A33198}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EB2A1B02-8B6C-4413-9DC1-584702A33198}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EB2A1B02-8B6C-4413-9DC1-584702A33198}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EB2A1B02-8B6C-4413-9DC1-584702A33198}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

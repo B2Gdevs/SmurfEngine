@@ -1,9 +1,3 @@
-﻿using SmurfEngine.Attributes;
-using SmurfEngine.Characters;
-using System;
-using System.Collections.Generic;
-using System.Text;
-
 namespace SmurfEngine.Items
 {
     public class Item

@@ -1,7 +1,4 @@
 ﻿using SmurfEngine.Utilities.Enums.Options;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace SmurfEngine.Utilities
 {

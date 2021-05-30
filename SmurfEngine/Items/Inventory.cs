@@ -16,7 +16,7 @@ namespace SmurfEngine.Items
         {
             if (quantity == 0) return;
 
-            if (this.Contents.TryGetValue(item.Name, out var invItem))
+            if (this.Contents.TryGetValue(item.Name, out InventoryItem invItem))
                 invItem.Quantity += quantity;
             else
                 this.Contents.Add(item.Name, new InventoryItem(item, quantity));
@@ -67,7 +67,7 @@ namespace SmurfEngine.Items
         /// </summary>
         public void Display()
         {
-            foreach (var c in this.Contents) 
+            foreach (KeyValuePair<string, InventoryItem> c in this.Contents)
                 c.Value.Display();
         }
     }

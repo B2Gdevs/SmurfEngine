@@ -1,17 +1,13 @@
 ﻿using Newtonsoft.Json;
-using SmurfEngine.Characters;
-using SmurfEngine.Items;
 using SmurfEngine.Utilities;
-using SmurfEngine.Utilities.DebugTools;
 using SmurfEngine.Utilities.Enums.Options;
 using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
 namespace SmurfEngine
 {
-    class SmurfEngine
+    public class SmurfEngine
     {
         public Game Game { get; set; }
         public Scene CurrentScene { get; set; }
@@ -20,7 +16,7 @@ namespace SmurfEngine
         {
             var playing = true;
             Option selectedOption;
-            this.CurrentScene = Game.Scenes.First().Value;
+            this.CurrentScene = this.Game.Scenes.First().Value;
             while (playing)
             {
                 selectedOption = this.CurrentScene.GetOption();
@@ -47,20 +43,38 @@ namespace SmurfEngine
 
         public void LoadGame(string path)
         {
-            using StreamReader r = new StreamReader(path);
-            string json = r.ReadToEnd();
+            using var r = new StreamReader(path);
+            var json = r.ReadToEnd();
             var settings = new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.All };
             this.Game = JsonConvert.DeserializeObject<Game>(json, settings);
+        }
+
+        public void LoadGame(Game game)
+        {
+            this.Game = game;
+        }
+
+        public void SaveGame(string fileName, string path)
+        {
+            var settings = new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.Auto };
+            var serializedGame = JsonConvert.SerializeObject(this.Game, settings);
+            Directory.CreateDirectory(path);
+            File.WriteAllText(Path.Join(path, fileName), serializedGame);
+        }
+
+        public void Reset()
+        {
+            this.Game = null;
+            this.CurrentScene = null;
         }
 
         public void SetScene(Option option)
         {
             this.CurrentScene = this.Game.Scenes[option.Name.ToLower()];
         }
-
-        public void Debug()
+        public void SetScene(Scene scene)
         {
-            SmurfDebugger.GenerateMockGameJson();
+            this.CurrentScene = scene;
         }
     }
 }
