@@ -10,64 +10,25 @@ namespace SmurfEngine.Characters
 {
     public class Character
     {
-        #region Public Properties
         public string Name { get; set; }
         public virtual int Health { get; set; }
         public Inventory Inventory { get; set; }
-        #endregion
 
-        #region Stats
-        private Dictionary<string, Stat> stats = new Dictionary<string, Stat>();
+        public CharacterStats Stats { get; set; }
 
-        public virtual Stat Strength     => this.GetStat(StatType.STR.ToString());
-        public virtual Stat Intelligence => this.GetStat(StatType.INT.ToString());
-        public virtual Stat Wisdom       => this.GetStat(StatType.WIS.ToString());
-        public virtual Stat Dexterity    => this.GetStat(StatType.DEX.ToString());
-        public virtual Stat Constitution => this.GetStat(StatType.CON.ToString());
-        public virtual Stat Charisma     => this.GetStat(StatType.CHA.ToString());
-        #endregion
-
-        #region Constructors
         /// <summary>
         /// Creates a Character with stats defaulted to zero
         /// </summary>
         /// <param name="name">The name of the character.</param>
         /// <param name="health">The character's base health</param>
         /// <param name="inventory">The inventory for the chacter to have.</param>
-        public Character(string name, int health, Inventory inventory)
+        public Character(string name, int health, Inventory inventory, CharacterStats stats)
         {
             this.Name = name;
             this.Health = health;
             this.Inventory = inventory;
-
-            // Initialize stats
-            foreach (var statName in Enum.GetNames(typeof(StatType)))
-                this.stats.Add(statName, new Stat(statName, 0, 0));
-
+            this.Stats = stats;
         }
-
-        /// <summary>
-        /// Create a character and sets all base stats. 
-        /// For testing purposes, not sure if this is the right approach.
-        /// </summary>
-        /// <param name="name">The name of the character.</param>
-        /// <param name="health">The character's base health</param>
-        /// <param name="inventory">The inventory for the chacter to have.</param>
-        /// <param name="stats">Players stats in order STR, INT, WIS, DEX, CON, CHA</param>
-        public Character(string name, int health, Inventory inventory, Tuple<int,int,int,int,int,int> stats)
-        {
-            this.Name = name;
-            this.Health = health;
-            this.Inventory = inventory;
-
-            this.stats.Add(StatType.STR.ToString(), new Stat(StatType.STR.ToString(), stats.Item1, 0));
-            this.stats.Add(StatType.INT.ToString(), new Stat(StatType.INT.ToString(), stats.Item2, 0));
-            this.stats.Add(StatType.WIS.ToString(), new Stat(StatType.WIS.ToString(), stats.Item3, 0));
-            this.stats.Add(StatType.DEX.ToString(), new Stat(StatType.DEX.ToString(), stats.Item4, 0));
-            this.stats.Add(StatType.CON.ToString(), new Stat(StatType.CON.ToString(), stats.Item5, 0));
-            this.stats.Add(StatType.CHA.ToString(), new Stat(StatType.CHA.ToString(), stats.Item6, 0));
-        }
-        #endregion
 
         /// <summary>
         /// Adds the item to the inventory by quantity amount.  
@@ -95,13 +56,17 @@ namespace SmurfEngine.Characters
         /// </summary>
         /// <param name="statName">The stat name.</param>
         /// <returns>The stat object.</returns>
-        public Stat GetStat(string statName)
-        {
-            _ = this.stats.TryGetValue(statName, out Stat stat);
-            return stat;
-        }
+        public Stat GetStat(string statName) => this.Stats.GetStat(statName);
 
-        #region Display Information
+        /// <summary>
+        /// Attempts to change the characters stat to a new value. 
+        /// If no stat exists with name statName a new stat is
+        /// created and defaulted to that value
+        /// </summary>
+        /// <param name="statName">The stat to change</param>
+        /// <param name="value">The new value to change it to</param>
+        public void SetStat(string statName, int value) => this.Stats.SetStat(statName, value);
+
         public virtual void DisplayInventory()
         {
             Console.Write("Inventory for ");
@@ -119,15 +84,8 @@ namespace SmurfEngine.Characters
             Console.Write(":\n");
             Console.WriteLine($"Stat:\tBase : Total");
             Console.WriteLine(("").PadRight(24, '*'));
-
-            foreach(var stat in stats.Values)
-            {
-                ConsoleExt.WriteColor($" {stat.Name}: \t{stat.BaseValue} : ", ConsoleColor.DarkGreen);
-                ConsoleExt.WriteColor($"{stat.Value}\n", ConsoleColor.Green);
-            }
-
+            Stats.Display();
             Console.WriteLine(("").PadRight(24, '*'));
         }
-        #endregion
     }
 }

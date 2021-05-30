@@ -9,36 +9,32 @@ namespace SmurfEngine.Attributes
         /// <summary>
         /// Bonuses from armor, weapons, or other permanent bonuses.
         /// </summary>
-        private List<RawBonus> rawBonusList;
-        /// <summary>
-        /// Bonuses from skills, or other temporary bonuses that are applied after the raw bonus.
-        /// </summary>
-        private List<FinalBonus> finalBonusList;
+        private List<Stat> rawBonusList { get; set; } = new List<Stat>();
 
-        public Stat(string name, int value, float multiplier) : base(name, value, multiplier)
-        {
-            this.rawBonusList = new List<RawBonus>();
-            this.finalBonusList = new List<FinalBonus>();
-        }
+        /// <summary>
+        /// Bonuses from skills, or other temporary bonuses that are applied 
+        /// after the raw bonus.
+        /// </summary>
+        private List<Stat> finalBonusList { get; set; } = new List<Stat>();
 
         public float Value => CalculateFinalValue();
 
-        public void AddRawBonus(RawBonus rawBonus)
+        public void AddRawBonus(Stat rawBonus)
         {
             rawBonusList.Add(rawBonus);
         }
 
-        public void AddFinalBonus(FinalBonus finalBonus)
+        public void AddFinalBonus(Stat finalBonus)
         {
             finalBonusList.Add(finalBonus);
         }
 
-        public bool RemoveRawBonus(RawBonus rawBonus)
+        public bool RemoveRawBonus(Stat rawBonus)
         {
             return rawBonusList.Remove(rawBonus);
         }
 
-        public bool RemoveFinalBonus(FinalBonus finalBonus)
+        public bool RemoveFinalBonus(Stat finalBonus)
         {
             return finalBonusList.Remove(finalBonus);
         }
