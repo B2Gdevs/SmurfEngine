@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace SmurfEngine.Attributes
+﻿namespace SmurfEngine.Attributes
 {
     public class FinalBonus : BaseStat
     {

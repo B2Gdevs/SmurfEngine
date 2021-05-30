@@ -1,7 +1,6 @@
 ﻿using SmurfEngine.Attributes;
 using SmurfEngine.Items;
 using SmurfEngine.UI;
-using SmurfEngine.Utilities;
 using SmurfEngine.Utilities.Enums;
 using System;
 using System.Collections.Generic;
@@ -17,14 +16,14 @@ namespace SmurfEngine.Characters
         #endregion
 
         #region Stats
-        private Dictionary<string, Stat> stats = new Dictionary<string, Stat>();
+        private readonly Dictionary<string, Stat> stats = new Dictionary<string, Stat>();
 
-        public virtual Stat Strength     => this.GetStat(StatType.STR.ToString());
+        public virtual Stat Strength => this.GetStat(StatType.STR.ToString());
         public virtual Stat Intelligence => this.GetStat(StatType.INT.ToString());
-        public virtual Stat Wisdom       => this.GetStat(StatType.WIS.ToString());
-        public virtual Stat Dexterity    => this.GetStat(StatType.DEX.ToString());
+        public virtual Stat Wisdom => this.GetStat(StatType.WIS.ToString());
+        public virtual Stat Dexterity => this.GetStat(StatType.DEX.ToString());
         public virtual Stat Constitution => this.GetStat(StatType.CON.ToString());
-        public virtual Stat Charisma     => this.GetStat(StatType.CHA.ToString());
+        public virtual Stat Charisma => this.GetStat(StatType.CHA.ToString());
         #endregion
 
         #region Constructors
@@ -54,7 +53,7 @@ namespace SmurfEngine.Characters
         /// <param name="health">The character's base health</param>
         /// <param name="inventory">The inventory for the chacter to have.</param>
         /// <param name="stats">Players stats in order STR, INT, WIS, DEX, CON, CHA</param>
-        public Character(string name, int health, Inventory inventory, Tuple<int,int,int,int,int,int> stats)
+        public Character(string name, int health, Inventory inventory, Tuple<int, int, int, int, int, int> stats)
         {
             this.Name = name;
             this.Health = health;
@@ -105,22 +104,22 @@ namespace SmurfEngine.Characters
         public virtual void DisplayInventory()
         {
             Console.Write("Inventory for ");
-            ConsoleExt.WriteColor(Name, ConsoleExt.PlayerNameColor);
+            ConsoleExt.WriteColor(this.Name, ConsoleExt.PlayerNameColor);
             Console.Write(":\n");
             Console.WriteLine(("").PadRight(24, '*'));
-            Inventory.Display();
+            this.Inventory.Display();
             Console.WriteLine(("").PadRight(24, '*'));
         }
 
         public virtual void DisplayStats()
         {
             Console.Write("Stats for ");
-            ConsoleExt.WriteColor(Name, ConsoleExt.PlayerNameColor);
+            ConsoleExt.WriteColor(this.Name, ConsoleExt.PlayerNameColor);
             Console.Write(":\n");
             Console.WriteLine($"Stat:\tBase : Total");
             Console.WriteLine(("").PadRight(24, '*'));
 
-            foreach(var stat in stats.Values)
+            foreach (Stat stat in this.stats.Values)
             {
                 ConsoleExt.WriteColor($" {stat.Name}: \t{stat.BaseValue} : ", ConsoleColor.DarkGreen);
                 ConsoleExt.WriteColor($"{stat.Value}\n", ConsoleColor.Green);
