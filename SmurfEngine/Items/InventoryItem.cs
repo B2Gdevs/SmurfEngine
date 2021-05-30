@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using SmurfEngine.UI;
+﻿using SmurfEngine.UI;
+using System;
 
 namespace SmurfEngine.Items
 {
