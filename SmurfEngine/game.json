@@ -1,97 +1,105 @@
 {
-  "$type": "SmurfEngine.Utilities.Game, SmurfEngine",
   "Player": {
-    "$type": "SmurfEngine.Characters.Player, SmurfEngine",
     "Name": "James",
     "Health": 30,
     "Inventory": {
-      "$type": "SmurfEngine.Items.Inventory, SmurfEngine",
       "Contents": {
-        "$type": "System.Collections.Generic.Dictionary`2[[System.String, System.Private.CoreLib],[SmurfEngine.Items.InventoryItem, SmurfEngine]], System.Private.CoreLib",
         "stick": {
-          "$type": "SmurfEngine.Items.InventoryItem, SmurfEngine",
           "Quantity": 2,
-          "Item": {
-            "$type": "SmurfEngine.Items.Item, SmurfEngine",
-            "Name": "stick"
-          }
+          "Item": { "Name": "stick" }
+        }
+      }
+    },
+    "Stats": {
+      "Stats": {
+        "STR": {
+          "Value": 0.0,
+          "Name": "STR",
+          "BaseValue": 0,
+          "BaseMultiplier": 0.0
+        },
+        "INT": {
+          "Value": 0.0,
+          "Name": "INT",
+          "BaseValue": 0,
+          "BaseMultiplier": 0.0
+        },
+        "WIS": {
+          "Value": 0.0,
+          "Name": "WIS",
+          "BaseValue": 0,
+          "BaseMultiplier": 0.0
+        },
+        "DEX": {
+          "Value": 0.0,
+          "Name": "DEX",
+          "BaseValue": 0,
+          "BaseMultiplier": 0.0
+        },
+        "CON": {
+          "Value": 0.0,
+          "Name": "CON",
+          "BaseValue": 0,
+          "BaseMultiplier": 0.0
+        },
+        "CHA": {
+          "Value": 0.0,
+          "Name": "CHA",
+          "BaseValue": 0,
+          "BaseMultiplier": 0.0
         }
       }
     }
   },
   "Scenes": {
-    "$type": "System.Collections.Generic.Dictionary`2[[System.String, System.Private.CoreLib],[SmurfEngine.Utilities.Scene, SmurfEngine]], System.Private.CoreLib",
     "scene 1": {
-      "$type": "SmurfEngine.Utilities.Scene, SmurfEngine",
       "Name": "scene 1",
-      "Options": {
-        "$type": "System.Collections.Generic.List`1[[SmurfEngine.Utilities.Option, SmurfEngine]], System.Private.CoreLib",
-        "$values": [
-          {
-            "$type": "SmurfEngine.Utilities.Option, SmurfEngine",
-            "Name": "Scene 2",
-            "OptionType": 0
-          },
-          {
-            "$type": "SmurfEngine.Utilities.Option, SmurfEngine",
-            "Name": "Inventory",
-            "OptionType": 3
-          },
-          {
-            "$type": "SmurfEngine.Utilities.Option, SmurfEngine",
-            "Name": "Exit",
-            "OptionType": 1
-          }
-        ]
-      },
+      "Options": [
+        {
+          "Name": "Scene 2",
+          "OptionType": 0
+        },
+        {
+          "Name": "Inventory",
+          "OptionType": 3
+        },
+        {
+          "Name": "Stats",
+          "OptionType": 4
+        },
+        {
+          "Name": "Exit",
+          "OptionType": 1
+        }
+      ],
       "Display": "scene1 text",
-      "Items": {
-        "$type": "System.Collections.Generic.List`1[[SmurfEngine.Items.Item, SmurfEngine]], System.Private.CoreLib",
-        "$values": [
-          {
-            "$type": "SmurfEngine.Items.Item, SmurfEngine",
-            "Name": "stick"
-          }
-        ]
-      }
+      "Items": [ { "Name": "stick" } ]
     },
     "scene 2": {
-      "$type": "SmurfEngine.Utilities.Scene, SmurfEngine",
       "Name": "scene 2",
-      "Options": {
-        "$type": "System.Collections.Generic.List`1[[SmurfEngine.Utilities.Option, SmurfEngine]], System.Private.CoreLib",
-        "$values": [
-          {
-            "$type": "SmurfEngine.Utilities.Option, SmurfEngine",
-            "Name": "Scene 1",
-            "OptionType": 0
-          },
-          {
-            "$type": "SmurfEngine.Utilities.Option, SmurfEngine",
-            "Name": "Inventory",
-            "OptionType": 3
-          },
-          {
-            "$type": "SmurfEngine.Utilities.Option, SmurfEngine",
-            "Name": "Exit",
-            "OptionType": 1
-          }
-        ]
-      },
+      "Options": [
+        {
+          "Name": "Scene 2",
+          "OptionType": 0
+        },
+        {
+          "Name": "Inventory",
+          "OptionType": 3
+        },
+        {
+          "Name": "Stats",
+          "OptionType": 4
+        },
+        {
+          "Name": "Exit",
+          "OptionType": 1
+        }
+      ],
       "Display": "scene2 text",
-      "Items": {
-        "$type": "System.Collections.Generic.List`1[[SmurfEngine.Items.Item, SmurfEngine]], System.Private.CoreLib",
-        "$values": [
-          {
-            "$type": "SmurfEngine.Items.Item, SmurfEngine",
-            "Name": "apple"
-          },
-          {
-            "$type": "SmurfEngine.Items.Item, SmurfEngine",
-            "Name": "pear"
-          }
-        ]
-      }
+      "Items": [
+        { "Name": "apple" },
+        { "Name": "pear" }
+      ]
     }
   }
 }

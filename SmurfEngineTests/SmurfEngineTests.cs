@@ -12,6 +12,8 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
+using SmurfEngine.Attributes;
+using SmurfEngine.Utilities.Enums;
 
 namespace SmurfEngine.Tests
 {
@@ -26,7 +28,27 @@ namespace SmurfEngine.Tests
             var inventory = new Inventory();
 
             inventory.Add(new Item("stick"), 2);
-            var player = new Player("James", 30, inventory);
+
+            CharacterStats stats = new CharacterStats
+            {
+                Stats = new Dictionary<string, Stat>
+                {
+                    { StatType.STR.ToString(),
+                        new Stat { Name = StatType.STR.ToString(), BaseMultiplier = 0f, BaseValue = 0 } },
+                    { StatType.INT.ToString(),
+                        new Stat { Name = StatType.INT.ToString(), BaseMultiplier = 0f, BaseValue = 0 } },
+                    { StatType.WIS.ToString(),
+                        new Stat { Name = StatType.WIS.ToString(), BaseMultiplier = 0f, BaseValue = 0 } },
+                    { StatType.DEX.ToString(),
+                        new Stat { Name = StatType.DEX.ToString(), BaseMultiplier = 0f, BaseValue = 0 } },
+                    { StatType.CON.ToString(),
+                        new Stat { Name = StatType.CON.ToString(), BaseMultiplier = 0f, BaseValue = 0 } },
+                    { StatType.CHA.ToString(),
+                        new Stat { Name = StatType.CHA.ToString(), BaseMultiplier = 0f, BaseValue = 0 } },
+                }
+            };
+
+            var player = new Player("James", 30, inventory, stats);
 
             var scene1 = new Scene
             {
@@ -37,6 +59,7 @@ namespace SmurfEngine.Tests
                 {
                     new Option { Name = "Scene 2", OptionType = OptionType.Scene },
                     new Option { Name = "Inventory", OptionType = OptionType.Inventory },
+                    new Option { Name = "Stats", OptionType = OptionType.Status },
                     new Option { Name = "Exit", OptionType = OptionType.Exit }
                 }
             };
@@ -52,8 +75,9 @@ namespace SmurfEngine.Tests
                 Name = "scene 2",
                 Options = new List<Option>
                 {
-                    new Option { Name = "Scene 1", OptionType = OptionType.Scene },
+                    new Option { Name = "Scene 2", OptionType = OptionType.Scene },
                     new Option { Name = "Inventory", OptionType = OptionType.Inventory },
+                    new Option { Name = "Stats", OptionType = OptionType.Status },
                     new Option { Name = "Exit", OptionType = OptionType.Exit }
                 }
             };
