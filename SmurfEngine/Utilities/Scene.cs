@@ -12,6 +12,11 @@ namespace SmurfEngine.Utilities
         public string Display { get; set; }
         public List<Item> Items { get; set; }
 
+        /// <summary>
+        /// Displays the available options in the scene for the user to choose from.
+        /// Retreives the option that the user has selected.
+        /// </summary>
+        /// <returns>The option that was selected.</returns>
         public Option GetOption()
         {
             this.DisplayOptions();
