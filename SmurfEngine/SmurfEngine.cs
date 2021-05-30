@@ -12,6 +12,10 @@ namespace SmurfEngine
         public Game Game { get; set; }
         public Scene CurrentScene { get; set; }
 
+        /// <summary>
+        /// This method is used to start the engine as a standalone player for
+        /// the command line.
+        /// </summary>
         public void Play()
         {
             var playing = true;
@@ -41,6 +45,10 @@ namespace SmurfEngine
             }
         }
 
+        /// <summary>
+        /// Loads the game file from the given location.
+        /// </summary>
+        /// <param name="path">The location of the game file.</param>
         public void LoadGame(string path)
         {
             using var r = new StreamReader(path);
@@ -49,11 +57,20 @@ namespace SmurfEngine
             this.Game = JsonConvert.DeserializeObject<Game>(json, settings);
         }
 
+        /// <summary>
+        /// Loads the game given a game object.
+        /// </summary>
+        /// <param name="game">The game object that.</param>
         public void LoadGame(Game game)
         {
             this.Game = game;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="fileName"></param>
+        /// <param name="path"></param>
         public void SaveGame(string fileName, string path)
         {
             var settings = new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.Auto };

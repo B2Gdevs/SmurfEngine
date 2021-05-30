@@ -17,10 +17,4 @@
     <ProjectReference Include="..\SmurfEngine\SmurfEngine.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <None Update="fakeGame.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-  </ItemGroup>
-
 </Project>

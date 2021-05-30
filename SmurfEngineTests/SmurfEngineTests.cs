@@ -1,19 +1,17 @@
-using SmurfEngine;
 /**
 * These unit tests are following the best practices found here. https://docs.microsoft.com/en-us/dotnet/core/testing/unit-testing-best-practices
 */
 
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using SmurfEngine.Attributes;
 using SmurfEngine.Characters;
 using SmurfEngine.Items;
 using SmurfEngine.Utilities;
+using SmurfEngine.Utilities.Enums;
 using SmurfEngine.Utilities.Enums.Options;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System;
-using SmurfEngine.Attributes;
-using SmurfEngine.Utilities.Enums;
 
 namespace SmurfEngine.Tests
 {
@@ -29,22 +27,16 @@ namespace SmurfEngine.Tests
 
             inventory.Add(new Item("stick"), 2);
 
-            CharacterStats stats = new CharacterStats
+            var stats = new CharacterStats
             {
                 Stats = new Dictionary<string, Stat>
                 {
-                    { StatType.STR.ToString(),
-                        new Stat { Name = StatType.STR.ToString(), BaseMultiplier = 0f, BaseValue = 0 } },
-                    { StatType.INT.ToString(),
-                        new Stat { Name = StatType.INT.ToString(), BaseMultiplier = 0f, BaseValue = 0 } },
-                    { StatType.WIS.ToString(),
-                        new Stat { Name = StatType.WIS.ToString(), BaseMultiplier = 0f, BaseValue = 0 } },
-                    { StatType.DEX.ToString(),
-                        new Stat { Name = StatType.DEX.ToString(), BaseMultiplier = 0f, BaseValue = 0 } },
-                    { StatType.CON.ToString(),
-                        new Stat { Name = StatType.CON.ToString(), BaseMultiplier = 0f, BaseValue = 0 } },
-                    { StatType.CHA.ToString(),
-                        new Stat { Name = StatType.CHA.ToString(), BaseMultiplier = 0f, BaseValue = 0 } },
+                    { StatType.STR.ToString(), new Stat { Name = StatType.STR.ToString(), BaseMultiplier = 0f, BaseValue = 0 } },
+                    { StatType.INT.ToString(), new Stat { Name = StatType.INT.ToString(), BaseMultiplier = 0f, BaseValue = 0 } },
+                    { StatType.WIS.ToString(), new Stat { Name = StatType.WIS.ToString(), BaseMultiplier = 0f, BaseValue = 0 } },
+                    { StatType.DEX.ToString(), new Stat { Name = StatType.DEX.ToString(), BaseMultiplier = 0f, BaseValue = 0 } },
+                    { StatType.CON.ToString(), new Stat { Name = StatType.CON.ToString(), BaseMultiplier = 0f, BaseValue = 0 } },
+                    { StatType.CHA.ToString(), new Stat { Name = StatType.CHA.ToString(), BaseMultiplier = 0f, BaseValue = 0 } },
                 }
             };
 
@@ -169,7 +161,7 @@ namespace SmurfEngine.Tests
             #region Arrange
             var engine = new SmurfEngine();
             Game fakeGame = this.CreateFakeGame();
-            var nextScene = fakeGame.Scenes.Skip(1).First().Value;
+            Scene nextScene = fakeGame.Scenes.Skip(1).First().Value;
             #endregion Arrange
 
             #region Act

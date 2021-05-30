@@ -20,9 +20,9 @@ namespace SmurfEngine.Utilities
             try
             {
                 if (int.TryParse(selection, out var index))
-                    return this.Options[index - 1];
-                else
-                    return new Option { OptionType = OptionType.Invalid };
+                    return this.Options[EngineRunningUtilities.GetFirstNumber(index) - 1];
+                
+                return new Option { OptionType = OptionType.Invalid };
 
             }
             catch (Exception ex) when (ex is IndexOutOfRangeException)
