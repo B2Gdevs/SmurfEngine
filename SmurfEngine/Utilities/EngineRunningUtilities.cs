@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace SmurfEngine.Utilities
+﻿namespace SmurfEngine.Utilities
 {
     public static class EngineRunningUtilities
     {

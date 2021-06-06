@@ -4,10 +4,8 @@ using SmurfEngine.Characters;
 using SmurfEngine.Items;
 using SmurfEngine.Utilities.Enums;
 using SmurfEngine.Utilities.Enums.Options;
-using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Text;
 
 namespace SmurfEngine.Utilities.DebugTools
 {
@@ -22,21 +20,21 @@ namespace SmurfEngine.Utilities.DebugTools
 
             inventory.Add(new Item("stick"), 2);
 
-            CharacterStats stats = new CharacterStats
+            var stats = new CharacterStats
             {
                 Stats = new Dictionary<string, Stat>
                 {
-                    { StatType.STR.ToString(), 
+                    { StatType.STR.ToString(),
                         new Stat { Name = StatType.STR.ToString(), BaseMultiplier = 0f, BaseValue = 0 } },
-                    { StatType.INT.ToString(), 
+                    { StatType.INT.ToString(),
                         new Stat { Name = StatType.INT.ToString(), BaseMultiplier = 0f, BaseValue = 0 } },
-                    { StatType.WIS.ToString(), 
+                    { StatType.WIS.ToString(),
                         new Stat { Name = StatType.WIS.ToString(), BaseMultiplier = 0f, BaseValue = 0 } },
-                    { StatType.DEX.ToString(), 
+                    { StatType.DEX.ToString(),
                         new Stat { Name = StatType.DEX.ToString(), BaseMultiplier = 0f, BaseValue = 0 } },
-                    { StatType.CON.ToString(), 
+                    { StatType.CON.ToString(),
                         new Stat { Name = StatType.CON.ToString(), BaseMultiplier = 0f, BaseValue = 0 } },
-                    { StatType.CHA.ToString(), 
+                    { StatType.CHA.ToString(),
                         new Stat { Name = StatType.CHA.ToString(), BaseMultiplier = 0f, BaseValue = 0 } },
                 }
             };
@@ -83,7 +81,7 @@ namespace SmurfEngine.Utilities.DebugTools
 
             var game = new Game { Player = player, Scenes = scenes };
 
-            var settings = new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.All, Formatting = Formatting.Indented};
+            var settings = new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.All, Formatting = Formatting.Indented };
             var jsonPlayer = JsonConvert.SerializeObject(game, settings);
             CreateDebugFilesFolder();
 

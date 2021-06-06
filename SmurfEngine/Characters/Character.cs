@@ -1,10 +1,7 @@
 ﻿using SmurfEngine.Attributes;
 using SmurfEngine.Items;
 using SmurfEngine.UI;
-using SmurfEngine.Utilities;
-using SmurfEngine.Utilities.Enums;
 using System;
-using System.Collections.Generic;
 
 namespace SmurfEngine.Characters
 {
@@ -56,7 +53,10 @@ namespace SmurfEngine.Characters
         /// </summary>
         /// <param name="statName">The stat name.</param>
         /// <returns>The stat object.</returns>
-        public Stat GetStat(string statName) => this.Stats.GetStat(statName);
+        public Stat GetStat(string statName)
+        {
+            return this.Stats.GetStat(statName);
+        }
 
         /// <summary>
         /// Attempts to change the characters stat to a new value. 
@@ -65,26 +65,29 @@ namespace SmurfEngine.Characters
         /// </summary>
         /// <param name="statName">The stat to change</param>
         /// <param name="value">The new value to change it to</param>
-        public void SetStat(string statName, int value) => this.Stats.SetStat(statName, value);
+        public void SetStat(string statName, int value)
+        {
+            this.Stats.SetStat(statName, value);
+        }
 
         public virtual void DisplayInventory()
         {
             Console.Write("Inventory for ");
-            ConsoleExt.WriteColor(Name, ConsoleExt.PlayerNameColor);
+            ConsoleExt.WriteColor(this.Name, ConsoleExt.PlayerNameColor);
             Console.Write(":\n");
             Console.WriteLine(("").PadRight(24, '*'));
-            Inventory.Display();
+            this.Inventory.Display();
             Console.WriteLine(("").PadRight(24, '*'));
         }
 
         public virtual void DisplayStats()
         {
             Console.Write("Stats for ");
-            ConsoleExt.WriteColor(Name, ConsoleExt.PlayerNameColor);
+            ConsoleExt.WriteColor(this.Name, ConsoleExt.PlayerNameColor);
             Console.Write(":\n");
             Console.WriteLine($"Stat:\tBase : Total");
             Console.WriteLine(("").PadRight(24, '*'));
-            Stats.Display();
+            this.Stats.Display();
             Console.WriteLine(("").PadRight(24, '*'));
         }
     }

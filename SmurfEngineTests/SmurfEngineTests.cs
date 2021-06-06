@@ -1,4 +1,3 @@
-using SmurfEngine;
 /**
 * These unit tests are following the best practices found here. https://docs.microsoft.com/en-us/dotnet/core/testing/unit-testing-best-practices
 */
@@ -11,7 +10,6 @@ using SmurfEngine.Utilities.Enums.Options;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System;
 
 namespace SmurfEngine.Tests
 {
@@ -85,7 +83,7 @@ namespace SmurfEngine.Tests
 
             #region Act
             engine.LoadGame(fakeGame);
-            engine.SaveGame(this.mockGameJsonFileName, this.debugFilesPath);
+            engine.SaveGame(mockGameJsonFileName, debugFilesPath);
             #endregion Act
         }
 
@@ -101,7 +99,7 @@ namespace SmurfEngine.Tests
             #endregion Arrange
 
             #region Act
-            engine.LoadGame(Path.Join(this.debugFilesPath, this.mockGameJsonFileName));
+            engine.LoadGame(Path.Join(debugFilesPath, mockGameJsonFileName));
             #endregion Act
         }
 
@@ -147,7 +145,7 @@ namespace SmurfEngine.Tests
             #region Arrange
             var engine = new SmurfEngine();
             Game fakeGame = this.CreateFakeGame();
-            var nextScene = fakeGame.Scenes.Skip(1).First().Value;
+            Scene nextScene = fakeGame.Scenes.Skip(1).First().Value;
             #endregion Arrange
 
             #region Act
