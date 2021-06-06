@@ -47,12 +47,12 @@ namespace SmurfEngine.Attributes
             return finalValue;
         }
 
-        private void ApplyBonusList<T>(ref float result, List<T> bonusList) where T : BaseStat
+        private void ApplyBonusList(ref float result, List<Stat> bonusList)
         {
             var finalBonusValue = 0f;
             var finalBonusMultiplier = 0f;
 
-            foreach (T bonus in bonusList)
+            foreach (Stat bonus in bonusList)
             {
                 finalBonusValue += bonus.BaseValue;
                 finalBonusMultiplier += bonus.BaseMultiplier;
