@@ -1,3 +1,4 @@
+using SmurfEngine;
 /**
 * These unit tests are following the best practices found here. https://docs.microsoft.com/en-us/dotnet/core/testing/unit-testing-best-practices
 */
@@ -10,6 +11,9 @@ using SmurfEngine.Utilities.Enums.Options;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System;
+using SmurfEngine.Attributes;
+using SmurfEngine.Utilities.Enums;
 
 namespace SmurfEngine.Tests
 {
@@ -24,7 +28,27 @@ namespace SmurfEngine.Tests
             var inventory = new Inventory();
 
             inventory.Add(new Item("stick"), 2);
-            var player = new Player("James", 30, inventory);
+
+            CharacterStats stats = new CharacterStats
+            {
+                Stats = new Dictionary<string, Stat>
+                {
+                    { StatType.STR.ToString(),
+                        new Stat { Name = StatType.STR.ToString(), BaseMultiplier = 0f, BaseValue = 0 } },
+                    { StatType.INT.ToString(),
+                        new Stat { Name = StatType.INT.ToString(), BaseMultiplier = 0f, BaseValue = 0 } },
+                    { StatType.WIS.ToString(),
+                        new Stat { Name = StatType.WIS.ToString(), BaseMultiplier = 0f, BaseValue = 0 } },
+                    { StatType.DEX.ToString(),
+                        new Stat { Name = StatType.DEX.ToString(), BaseMultiplier = 0f, BaseValue = 0 } },
+                    { StatType.CON.ToString(),
+                        new Stat { Name = StatType.CON.ToString(), BaseMultiplier = 0f, BaseValue = 0 } },
+                    { StatType.CHA.ToString(),
+                        new Stat { Name = StatType.CHA.ToString(), BaseMultiplier = 0f, BaseValue = 0 } },
+                }
+            };
+
+            var player = new Player("James", 30, inventory, stats);
 
             var scene1 = new Scene
             {
@@ -83,7 +107,7 @@ namespace SmurfEngine.Tests
 
             #region Act
             engine.LoadGame(fakeGame);
-            engine.SaveGame(mockGameJsonFileName, debugFilesPath);
+            engine.SaveGame(this.mockGameJsonFileName, this.debugFilesPath);
             #endregion Act
         }
 
@@ -99,7 +123,7 @@ namespace SmurfEngine.Tests
             #endregion Arrange
 
             #region Act
-            engine.LoadGame(Path.Join(debugFilesPath, mockGameJsonFileName));
+            engine.LoadGame(Path.Join(this.debugFilesPath, this.mockGameJsonFileName));
             #endregion Act
         }
 
@@ -145,7 +169,7 @@ namespace SmurfEngine.Tests
             #region Arrange
             var engine = new SmurfEngine();
             Game fakeGame = this.CreateFakeGame();
-            Scene nextScene = fakeGame.Scenes.Skip(1).First().Value;
+            var nextScene = fakeGame.Scenes.Skip(1).First().Value;
             #endregion Arrange
 
             #region Act
