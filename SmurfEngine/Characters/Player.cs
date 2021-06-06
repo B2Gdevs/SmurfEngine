@@ -1,7 +1,5 @@
 ﻿using SmurfEngine.Attributes;
 using SmurfEngine.Items;
-using SmurfEngine.UI;
-using System;
 
 namespace SmurfEngine.Characters
 {

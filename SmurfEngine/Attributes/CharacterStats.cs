@@ -1,8 +1,6 @@
 ﻿using SmurfEngine.UI;
-using SmurfEngine.Utilities.Enums;
 using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace SmurfEngine.Attributes
 {
@@ -32,7 +30,7 @@ namespace SmurfEngine.Attributes
             if (this.Stats.TryGetValue(statName, out Stat stat))
                 stat.BaseValue = value;
             else
-                Stats.Add(statName, new Stat { Name = statName, BaseValue = value, BaseMultiplier = 0 });
+                this.Stats.Add(statName, new Stat { Name = statName, BaseValue = value, BaseMultiplier = 0 });
         }
 
         /// <summary>
@@ -40,7 +38,7 @@ namespace SmurfEngine.Attributes
         /// </summary>
         public void Display()
         {
-            foreach (var stat in this.Stats.Values)
+            foreach (Stat stat in this.Stats.Values)
             {
                 ConsoleExt.WriteColor($" {stat.Name}: \t{stat.BaseValue} : ", ConsoleColor.DarkGreen);
                 ConsoleExt.WriteColor($"{stat.Value}\n", ConsoleColor.Green);

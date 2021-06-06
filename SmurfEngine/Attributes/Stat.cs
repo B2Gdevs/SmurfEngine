@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 
 namespace SmurfEngine.Attributes
 {
@@ -17,44 +15,44 @@ namespace SmurfEngine.Attributes
         /// </summary>
         private List<Stat> finalBonusList { get; set; } = new List<Stat>();
 
-        public float Value => CalculateFinalValue();
+        public float Value => this.CalculateFinalValue();
 
         public void AddRawBonus(Stat rawBonus)
         {
-            rawBonusList.Add(rawBonus);
+            this.rawBonusList.Add(rawBonus);
         }
 
         public void AddFinalBonus(Stat finalBonus)
         {
-            finalBonusList.Add(finalBonus);
+            this.finalBonusList.Add(finalBonus);
         }
 
         public bool RemoveRawBonus(Stat rawBonus)
         {
-            return rawBonusList.Remove(rawBonus);
+            return this.rawBonusList.Remove(rawBonus);
         }
 
         public bool RemoveFinalBonus(Stat finalBonus)
         {
-            return finalBonusList.Remove(finalBonus);
+            return this.finalBonusList.Remove(finalBonus);
         }
 
-        private float CalculateFinalValue() 
+        private float CalculateFinalValue()
         {
-            float finalValue = BaseValue;
+            float finalValue = this.BaseValue;
 
-            ApplyBonusList(ref finalValue, rawBonusList);
-            ApplyBonusList(ref finalValue, finalBonusList);
+            this.ApplyBonusList(ref finalValue, this.rawBonusList);
+            this.ApplyBonusList(ref finalValue, this.finalBonusList);
 
             return finalValue;
         }
 
-        private void ApplyBonusList<T>(ref float result, List<T> bonusList) where T:BaseStat
+        private void ApplyBonusList(ref float result, List<Stat> bonusList)
         {
             var finalBonusValue = 0f;
             var finalBonusMultiplier = 0f;
 
-            foreach (var bonus in bonusList)
+            foreach (Stat bonus in bonusList)
             {
                 finalBonusValue += bonus.BaseValue;
                 finalBonusMultiplier += bonus.BaseMultiplier;
