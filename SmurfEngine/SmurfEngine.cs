@@ -75,7 +75,7 @@ namespace SmurfEngine
         {
             var settings = new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.Auto };
             var serializedGame = JsonConvert.SerializeObject(this.Game, settings);
-            Directory.CreateDirectory(path);
+            _ = Directory.CreateDirectory(path);
             File.WriteAllText(Path.Join(path, fileName), serializedGame);
         }
 

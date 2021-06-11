@@ -70,6 +70,9 @@ namespace SmurfEngine.Characters
             this.Stats.SetStat(statName, value);
         }
 
+        /// <summary>
+        /// Displays the inventory
+        /// </summary>
         public virtual void DisplayInventory()
         {
             Console.Write("Inventory for ");
@@ -80,6 +83,9 @@ namespace SmurfEngine.Characters
             Console.WriteLine(("").PadRight(24, '*'));
         }
 
+        /// <summary>
+        /// Displays the players stats
+        /// </summary>
         public virtual void DisplayStats()
         {
             Console.Write("Stats for ");
