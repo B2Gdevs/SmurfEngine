@@ -84,7 +84,7 @@ namespace SmurfEngine.Characters
         }
 
         /// <summary>
-        /// Displays the players stats
+        /// Displays the players stats.
         /// </summary>
         public virtual void DisplayStats()
         {
