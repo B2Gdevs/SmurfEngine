@@ -25,22 +25,19 @@
       "$type": "SmurfEngine.Utilities.Scene, SmurfEngine",
       "Name": "scene 1",
       "Options": {
-        "$type": "System.Collections.Generic.List`1[[SmurfEngine.Utilities.Option, SmurfEngine]], System.Private.CoreLib",
+        "$type": "System.Collections.Generic.List`1[[SmurfEngine.Utilities.Options.Option, SmurfEngine]], System.Private.CoreLib",
         "$values": [
           {
-            "$type": "SmurfEngine.Utilities.Option, SmurfEngine",
-            "Name": "Scene 2",
-            "OptionType": 0
+            "$type": "SmurfEngine.Utilities.Options.SceneOption, SmurfEngine",
+            "Name": "Scene 2"
           },
           {
-            "$type": "SmurfEngine.Utilities.Option, SmurfEngine",
-            "Name": "Inventory",
-            "OptionType": 3
+            "$type": "SmurfEngine.Utilities.Options.InventoryOption, SmurfEngine",
+            "Name": "Inventory"
           },
           {
-            "$type": "SmurfEngine.Utilities.Option, SmurfEngine",
-            "Name": "Exit",
-            "OptionType": 1
+            "$type": "SmurfEngine.Utilities.Options.ExitOption, SmurfEngine",
+            "Name": "Exit"
           }
         ]
       },
@@ -59,22 +56,19 @@
       "$type": "SmurfEngine.Utilities.Scene, SmurfEngine",
       "Name": "scene 2",
       "Options": {
-        "$type": "System.Collections.Generic.List`1[[SmurfEngine.Utilities.Option, SmurfEngine]], System.Private.CoreLib",
+        "$type": "System.Collections.Generic.List`1[[SmurfEngine.Utilities.Options.Option, SmurfEngine]], System.Private.CoreLib",
         "$values": [
           {
-            "$type": "SmurfEngine.Utilities.Option, SmurfEngine",
-            "Name": "Scene 1",
-            "OptionType": 0
+            "$type": "SmurfEngine.Utilities.Options.SceneOption, SmurfEngine",
+            "Name": "Scene 1"
           },
           {
-            "$type": "SmurfEngine.Utilities.Option, SmurfEngine",
-            "Name": "Inventory",
-            "OptionType": 3
+            "$type": "SmurfEngine.Utilities.Options.InventoryOption, SmurfEngine",
+            "Name": "Inventory"
           },
           {
-            "$type": "SmurfEngine.Utilities.Option, SmurfEngine",
-            "Name": "Exit",
-            "OptionType": 1
+            "$type": "SmurfEngine.Utilities.Options.ExitOption, SmurfEngine",
+            "Name": "Exit"
           }
         ]
       },

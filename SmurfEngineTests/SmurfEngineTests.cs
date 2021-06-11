@@ -1,4 +1,3 @@
-using SmurfEngine;
 /**
 * These unit tests are following the best practices found here. https://docs.microsoft.com/en-us/dotnet/core/testing/unit-testing-best-practices
 */
@@ -7,11 +6,10 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using SmurfEngine.Characters;
 using SmurfEngine.Items;
 using SmurfEngine.Utilities;
-using SmurfEngine.Utilities.Enums.Options;
+using SmurfEngine.Utilities.Options;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System;
 
 namespace SmurfEngine.Tests
 {
@@ -35,9 +33,9 @@ namespace SmurfEngine.Tests
                 Name = "scene 1",
                 Options = new List<Option>
                 {
-                    new Option { Name = "Scene 2", OptionType = OptionType.Scene },
-                    new Option { Name = "Inventory", OptionType = OptionType.Inventory },
-                    new Option { Name = "Exit", OptionType = OptionType.Exit }
+                    new SceneOption { Name = "Scene 2"},
+                    new InventoryOption { Name = "Inventory"},
+                    new ExitOption { Name = "Exit"}
                 }
             };
 
@@ -52,9 +50,9 @@ namespace SmurfEngine.Tests
                 Name = "scene 2",
                 Options = new List<Option>
                 {
-                    new Option { Name = "Scene 1", OptionType = OptionType.Scene },
-                    new Option { Name = "Inventory", OptionType = OptionType.Inventory },
-                    new Option { Name = "Exit", OptionType = OptionType.Exit }
+                    new SceneOption { Name = "Scene 1" },
+                    new InventoryOption { Name = "Inventory" },
+                    new ExitOption { Name = "Exit" }
                 }
             };
 
@@ -145,7 +143,7 @@ namespace SmurfEngine.Tests
             #region Arrange
             var engine = new SmurfEngine();
             Game fakeGame = this.CreateFakeGame();
-            var nextScene = fakeGame.Scenes.Skip(1).First().Value;
+            Scene nextScene = fakeGame.Scenes.Skip(1).First().Value;
             #endregion Arrange
 
             #region Act
@@ -166,12 +164,12 @@ namespace SmurfEngine.Tests
             Game fakeGame = this.CreateFakeGame();
             Option option = fakeGame.Scenes.First()
                                            .Value
-                                           .Options.First(option => option.OptionType is OptionType.Scene);
+                                           .Options.First(option => option is SceneOption);
             #endregion Arrange
 
             #region Act
             engine.LoadGame(fakeGame);
-            engine.SetScene(option);
+            engine.SetScene((SceneOption)option);
             #endregion Act
 
             #region Assert
