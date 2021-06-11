@@ -1,5 +1,4 @@
 ﻿using SmurfEngine.UI;
-using System;
 
 namespace SmurfEngine.Items
 {
@@ -16,11 +15,8 @@ namespace SmurfEngine.Items
 
         public void Display()
         {
-            UIText.SetColor(UIText.itemNameColor);
-            Console.Write($"{this.Item.Name}\t");
-            UIText.SetColor(UIText.itemQuantityColor);
-            Console.Write($"x{this.Quantity}\n");
-            UIText.SetColor(UIText.defaultColor);
+            ConsoleExt.WriteColor($"{this.Item.Name}\t", ConsoleExt.ItemNameColor);
+            ConsoleExt.WriteColor($"x{this.Quantity}\n", ConsoleExt.ItemQuantityColor);
         }
     }
 }

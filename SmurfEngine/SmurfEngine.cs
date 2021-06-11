@@ -66,7 +66,6 @@ namespace SmurfEngine
 
         public void PerformOption(Option selectedOption)
         {
-
             if (selectedOption is ExitOption)
                 this.ExitGame();
 

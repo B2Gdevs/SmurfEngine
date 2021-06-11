@@ -1,4 +1,4 @@
-﻿namespace SmurfEngine.Items
+namespace SmurfEngine.Items
 {
     public class Item
     {

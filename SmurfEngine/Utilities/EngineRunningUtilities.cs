@@ -2,7 +2,6 @@
 {
     public static class EngineRunningUtilities
     {
-
         public static int GetFirstNumber(int number)
         {
             while (number >= 10)
