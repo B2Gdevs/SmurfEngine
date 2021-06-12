@@ -6,5 +6,6 @@ namespace SmurfEngine.Utilities
     {
         public string Name { get; set; }
         public OptionType OptionType { get; set; }
+        public string DisplayText { get; set; }
     }
 }

@@ -71,10 +71,12 @@ namespace SmurfEngine
         public void SetScene(Option option)
         {
             this.CurrentScene = this.Game.Scenes[option.Name.ToLower()];
+            this.CurrentScene.NumVisits++;
         }
         public void SetScene(Scene scene)
         {
             this.CurrentScene = scene;
+            this.CurrentScene.NumVisits++;
         }
     }
 }

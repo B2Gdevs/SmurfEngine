@@ -12,6 +12,11 @@ namespace SmurfEngine.Utilities
         public string Display { get; set; }
         public List<Item> Items { get; set; }
 
+        /// <summary>
+        /// This property is added based on the Twine story format
+        /// </summary>
+        public int NumVisits { get; set; } = 0;
+
         public Option GetOption()
         {
             this.DisplayOptions();
