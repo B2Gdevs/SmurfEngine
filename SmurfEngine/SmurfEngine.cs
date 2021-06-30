@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 using SmurfEngine.Utilities;
-using SmurfEngine.Utilities.Enums.Options;
+using SmurfEngine.Utilities.Options;
 using System;
 using System.IO;
 using System.Linq;
@@ -14,30 +14,13 @@ namespace SmurfEngine
 
         public void Play()
         {
-            var playing = true;
-            Option selectedOption;
-            this.CurrentScene = this.Game.Scenes.First().Value;
-            while (playing)
+            while (true)
             {
-                selectedOption = this.CurrentScene.GetOption();
-
-                if (selectedOption.OptionType is OptionType.Invalid)
-                {
-                    Console.WriteLine("Invalid option selected. Please choose a valid option");
-                    continue;
-                }
-
-                if (selectedOption.OptionType is OptionType.Exit)
-                    Environment.Exit(0);
-
-                if (selectedOption.OptionType is OptionType.Scene)
-                    this.SetScene(selectedOption);
-
-                if (selectedOption.OptionType is OptionType.Inventory)
-                    this.Game.Player.DisplayInventory();
-
-                if (selectedOption.OptionType is OptionType.Status)
-                    this.Game.Player.DisplayStats();
+                this.CurrentScene.DisplayText();
+                Console.WriteLine("\n");
+                this.CurrentScene.DisplayOptions();
+                this.PerformOption(this.CurrentScene.GetOption());
+                Console.WriteLine("\n\n");
             }
         }
 
@@ -45,13 +28,15 @@ namespace SmurfEngine
         {
             using var r = new StreamReader(path);
             var json = r.ReadToEnd();
-            var settings = new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.All };
+            var settings = new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.Auto };
             this.Game = JsonConvert.DeserializeObject<Game>(json, settings);
+            this.CurrentScene = this.Game.Scenes.First().Value;
         }
 
         public void LoadGame(Game game)
         {
             this.Game = game;
+            this.CurrentScene = this.Game.Scenes.First().Value;
         }
 
         public void SaveGame(string fileName, string path)
@@ -68,15 +53,45 @@ namespace SmurfEngine
             this.CurrentScene = null;
         }
 
-        public void SetScene(Option option)
+        public void SetScene(SceneOption option)
         {
             this.CurrentScene = this.Game.Scenes[option.Name.ToLower()];
             this.CurrentScene.NumVisits++;
         }
+
         public void SetScene(Scene scene)
         {
             this.CurrentScene = scene;
             this.CurrentScene.NumVisits++;
+        }
+
+        public void ExitGame()
+        {
+            Environment.Exit(0);
+        }
+
+        public void PerformOption(Option selectedOption)
+        {
+            if (selectedOption is ExitOption)
+                this.ExitGame();
+
+            if (selectedOption is InvalidOption)
+            {
+                Console.WriteLine("Invalid option selected. Please choose a valid option");
+                return;
+            }
+
+            if (selectedOption is SceneOption option)
+            {
+                this.SetScene(option);
+                return;
+            }
+
+            if (selectedOption is InventoryOption)
+            {
+                this.Game.Player.DisplayInventory();
+                return;
+            }
         }
     }
 }

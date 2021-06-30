@@ -54,47 +54,45 @@
   "Scenes": {
     "scene 1": {
       "Name": "scene 1",
-      "Options": [
-        {
-          "Name": "Scene 2",
-          "OptionType": 0
-        },
-        {
-          "Name": "Inventory",
-          "OptionType": 3
-        },
-        {
-          "Name": "Stats",
-          "OptionType": 4
-        },
-        {
-          "Name": "Exit",
-          "OptionType": 1
-        }
-      ],
+      "Options": {
+        "$type": "System.Collections.Generic.List`1[[SmurfEngine.Utilities.Options.Option, SmurfEngine]], System.Private.CoreLib",
+        "$values": [
+          {
+            "$type": "SmurfEngine.Utilities.Options.SceneOption, SmurfEngine",
+            "Name": "Scene 2"
+          },
+          {
+            "$type": "SmurfEngine.Utilities.Options.InventoryOption, SmurfEngine",
+            "Name": "Inventory"
+          },
+          {
+            "$type": "SmurfEngine.Utilities.Options.ExitOption, SmurfEngine",
+            "Name": "Exit"
+          }
+        ]
+      },
       "Display": "scene1 text",
       "Items": [ { "Name": "stick" } ]
     },
     "scene 2": {
       "Name": "scene 2",
-      "Options": [
-        {
-          "Name": "Scene 2",
-          "OptionType": 0
-        },
-        {
-          "Name": "Inventory",
-          "OptionType": 3
-        },
-        {
-          "Name": "Stats",
-          "OptionType": 4
-        },
-        {
-          "Name": "Exit",
-          "OptionType": 1
-        }
-      ],
+      "Options": {
+        "$type": "System.Collections.Generic.List`1[[SmurfEngine.Utilities.Options.Option, SmurfEngine]], System.Private.CoreLib",
+        "$values": [
+          {
+            "$type": "SmurfEngine.Utilities.Options.SceneOption, SmurfEngine",
+            "Name": "Scene 1"
+          },
+          {
+            "$type": "SmurfEngine.Utilities.Options.InventoryOption, SmurfEngine",
+            "Name": "Inventory"
+          },
+          {
+            "$type": "SmurfEngine.Utilities.Options.ExitOption, SmurfEngine",
+            "Name": "Exit"
+          }
+        ]
+      },
       "Display": "scene2 text",
       "Items": [
         { "Name": "apple" },

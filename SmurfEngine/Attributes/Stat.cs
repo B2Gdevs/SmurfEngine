@@ -59,7 +59,7 @@ namespace SmurfEngine.Attributes
             }
 
             result += finalBonusValue;
-            result *= (1 + finalBonusMultiplier);
+            result *= 1 + finalBonusMultiplier;
         }
     }
 }
