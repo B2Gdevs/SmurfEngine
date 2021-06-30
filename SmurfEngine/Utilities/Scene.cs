@@ -1,5 +1,5 @@
 using SmurfEngine.Items;
-using SmurfEngine.Utilities.Enums.Options;
+using SmurfEngine.Utilities.Options;
 using System;
 using System.Collections.Generic;
 
@@ -19,15 +19,11 @@ namespace SmurfEngine.Utilities
 
             try
             {
-                if (int.TryParse(selection, out var index))
-                    return this.Options[index - 1];
-                else
-                    return new Option { OptionType = OptionType.Invalid };
-
+                return int.TryParse(selection, out var index) ? this.Options[index - 1] : new InvalidOption();
             }
             catch (Exception ex) when (ex is IndexOutOfRangeException)
             {
-                return new Option { OptionType = OptionType.Invalid };
+                return new InvalidOption();
             }
 
         }
