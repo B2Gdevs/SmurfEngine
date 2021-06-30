@@ -129,11 +129,11 @@ namespace SmurfEngine
 
             Match optionMatch = optionMatches.FirstOrDefault();
             Match metaDataMatch = metaDataMatches.FirstOrDefault();
-             
+
             sceneText = !(optionMatch is null) ? sceneText.Split(optionMatch.Value).FirstOrDefault() : sceneText;
-            sceneText = !(metaDataMatch is null) ? sceneText.Split(metaDataMatch.Value).LastOrDefault() : sceneText ;
+            sceneText = !(metaDataMatch is null) ? sceneText.Split(metaDataMatch.Value).LastOrDefault() : sceneText;
             return sceneText;
-            
+
         }
 
         /// <summary>
@@ -145,12 +145,12 @@ namespace SmurfEngine
         /// <returns>A tuple with the format (displayText, sceneName).</returns>
         public static Tuple<string, string> ParsePassageLink(string twineLinkText)
         {
-            var charsToRemove = new string[] { "[[", "]]"};
+            var charsToRemove = new string[] { "[[", "]]" };
             foreach (var c in charsToRemove)
             {
                 twineLinkText = twineLinkText.Replace(c, string.Empty);
             }
-            var links = twineLinkText.Split(new [] { "|", "->" }, StringSplitOptions.RemoveEmptyEntries);
+            var links = twineLinkText.Split(new[] { "|", "->" }, StringSplitOptions.RemoveEmptyEntries);
 
             return links.Count() > 1
                 ? new Tuple<string, string>(links[0], links[1])
