@@ -3,9 +3,11 @@
 */
 
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using SmurfEngine.Attributes;
 using SmurfEngine.Characters;
 using SmurfEngine.Items;
 using SmurfEngine.Utilities;
+using SmurfEngine.Utilities.Enums;
 using SmurfEngine.Utilities.Options;
 using System.Collections.Generic;
 using System.IO;
